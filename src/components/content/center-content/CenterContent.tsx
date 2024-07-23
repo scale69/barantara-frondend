@@ -14,7 +14,7 @@ export default function CenterContent() {
   if (error) return <div></div>;
   if (isLoading) {
     return (
-      <div className="flex  justify-center items-center w-full   h-screen">
+      <div className="flex fixed top-0 right-0 z-20  justify-center items-center w-full   h-screen">
         <Spin />
       </div>
     );
