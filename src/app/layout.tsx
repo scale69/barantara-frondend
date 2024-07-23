@@ -17,7 +17,7 @@ import "/public/assets/css/swiper.min.css";
 import "/public/assets/css/venobox.min.css";
 
 const poppins = Poppins({
-  weight: ["300"],
+  weight: ["400"],
   subsets: ["latin"],
   style: ["normal"],
 });

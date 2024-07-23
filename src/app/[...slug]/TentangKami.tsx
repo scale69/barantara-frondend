@@ -19,6 +19,8 @@ export default function TentangKami() {
       </div>
     );
   }
+  console.log(data);
+
   return (
     <div className="flex  text-black flex-col  h-full w-full py-16 md:py-24 ">
       <div className="flex md:gap-5 justify-center w-full p-2 h-full">
@@ -27,7 +29,13 @@ export default function TentangKami() {
             <span className="font-semibold uppercase text-slate-600 p-4  bg-slate-200">
               Tentang Kami
             </span>
-            {!data && <Empty />}
+
+            {data.length == 0 && (
+              <div className="p-10">
+                <Empty />
+              </div>
+            )}
+
             {data?.map((item: any) => (
               <div key={1} className="flex flex-col gap-2 p-4 w-full">
                 <ReactMarkdown>{item.isi}</ReactMarkdown>

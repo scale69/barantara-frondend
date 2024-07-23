@@ -14,6 +14,7 @@
     "axios": "^1.7.2",
     "date-fns": "^3.6.0",
     "install": "^0.13.0",
+    "md-editor-rt": "^4.17.4",
     "next": "14.2.5",
     "next-view-transitions": "^0.2.0",
     "nuqs": "^1.17.4",
@@ -21,7 +22,7 @@
     "postcss-simple-vars": "^7.0.1",
     "react": "^18",
     "react-dom": "^18",
-    "react-markdown": "^9.0.1",
+    "react-markdown": "8.0.6",
     "react-screen-size-helper": "^1.0.3",
     "sharp": "^0.33.4",
     "swr": "^2.2.5"

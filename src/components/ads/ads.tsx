@@ -33,7 +33,7 @@ export default function Ads({
   }
 
   return (
-    <div className="flex flex-col  justify-center items-center  w-full lg:max-w-[350px] h-max">
+    <div className="flex flex-col  justify-center items-center gap-4 w-full lg:max-w-[350px] h-max">
       {position?.includes("header") || position?.includes("mobile") ? (
         <AdsImage
           srcUrl={

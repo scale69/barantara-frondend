@@ -80,10 +80,10 @@ export default function CardNews({ data }: { data: any }) {
                       ? `/${item.slug}`
                       : `/${item.category}/${item.slug}`
                   }
-                  className="mb-2 block hover:text-sky-700  text-xs -semibold leading-snug tracking-normal text-blue-gray-900 antialiased"
+                  className="mb-2 block hover:text-blue-500  text-xs font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased"
                 >
                   {item.judul}
-                  <p className="hidden hover:underline md:block text-xs  h-12 overflow-hidden    text-gray-700 antialiased">
+                  <p className="hidden hover:underline md:block text-xs h-12 overflow-hidden  text-slate-500  antialiased">
                     {item.isi}
                   </p>
                 </Link>

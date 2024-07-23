@@ -16,6 +16,7 @@ import CardTags from "@/components/tags/CardTags";
 import NotFound from "../not-found";
 import MobileAds from "@/components/ads/MobileAds";
 import { notFound } from "next/navigation";
+import { MdPreview, MdCatalog } from "md-editor-rt";
 
 export default function DetailPost({ slug }: { slug: any }) {
   const { data, error, isLoading } = useSWR(`${slug}`, filterPost, {
@@ -32,10 +33,10 @@ export default function DetailPost({ slug }: { slug: any }) {
       </div>
     );
   }
-  // if (!data) return notFound();
-  // if (!data[0]?.category) {
-  //   return notFound();
-  // }
+  if (!data) return notFound();
+  if (!data[0]?.category) {
+    return notFound();
+  }
   const dateStr = data[0]?.createdAt;
   const date = new Date(dateStr);
   const optionsDate: Intl.DateTimeFormatOptions = {
@@ -74,7 +75,7 @@ export default function DetailPost({ slug }: { slug: any }) {
             >
               {/* nav */}
               <div className="flex flex-col gap-2">
-                <span className="text-2xl font-semibold py-5">
+                <span className="text-2xl font-bold text-slate-900 py-5">
                   {item.judul}
                 </span>
                 <div className="flex items-center gap-2 ">
@@ -95,9 +96,11 @@ export default function DetailPost({ slug }: { slug: any }) {
                     sizes="300"
                   />
                 </div>
+                <span className="text-xs italic">{item.caption}</span>
               </div>
               {/* body */}
-              <ReactMarkdown>{item.isi}</ReactMarkdown>
+              {/* <ReactMarkdown className={""}>{item.isi}</ReactMarkdown> */}
+              <MdPreview editorId={"isi"} modelValue={item.isi} />
               <div className="my-10 flex  flex-col py-2 pr-20 pl-4 bg-slate-300 ">
                 <div className="flex  items-center gap-2">
                   <RadiusBottomleftOutlined />

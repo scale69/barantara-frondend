@@ -34,7 +34,7 @@ export default function Search() {
             onChange={(e) => setQuery(e.target.value)}
             type="search"
             id="default-search"
-            className="block py-3 px-8 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
+            className="block py-3 px-8 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
             placeholder=" Temukan Berita"
             required
             value={query}
