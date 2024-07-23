@@ -43,7 +43,7 @@ export default function CardSearch({ category }: { category: string }) {
   if (error) return <div>failed to load</div>;
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center w-[720px]   h-screen">
+      <div className="flex justify-center items-center w-full   h-screen">
         <Spin />
       </div>
     );
