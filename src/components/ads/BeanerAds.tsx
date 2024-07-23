@@ -2,6 +2,7 @@
 
 import FiledAPI from "@/app/filedAPI";
 import { fetchSosmed, filterSosmed } from "@/lib/axios/action";
+import Image from "next/image";
 import Link from "next/link";
 import useSWR from "swr";
 
@@ -37,8 +38,14 @@ export default function BeanerAds() {
             </div>
             <div className="col-lg-6">
               <div className="subscribe-thumb">
-                <div className="line" />
-                <img src="/assets/img/images/subscribe-img.png" alt="img" />
+                <div className="line relative" />
+                <Image
+                  alt="image"
+                  width={500}
+                  height={500}
+                  className="h-full w-full object-cover"
+                  src="/assets/img/images/subscribe-img.png"
+                />
               </div>
             </div>
           </div>

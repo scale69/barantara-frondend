@@ -81,14 +81,17 @@ export default function Footer() {
                         });
                         return (
                           <li key={item.id}>
-                            <Link href="/single-post-1">
-                              <img
+                            <Link href="/single-post-1 relative">
+                              <Image
                                 src={
                                   item.gambar?.formats.large?.url
                                     ? `${process.env.NEXT_PUBLIC_URL_BACKEND}${item.gambar?.formats.large?.url}`
                                     : `/news.png`
                                 }
-                                alt="post"
+                                alt="image"
+                                width={500}
+                                height={500}
+                                className="h-full w-full object-cover"
                               />
                             </Link>
                             <h6 className="post-title">
@@ -124,14 +127,17 @@ export default function Footer() {
                         });
                         return (
                           <li key={item.id}>
-                            <Link href="/single-post-1">
-                              <img
+                            <Link href="/single-post-1 relative">
+                              <Image
                                 src={
                                   item.gambar?.formats.large?.url
                                     ? `${process.env.NEXT_PUBLIC_URL_BACKEND}${item.gambar?.formats.large?.url}`
                                     : `/news.png`
                                 }
-                                alt="post"
+                                alt="image"
+                                width={500}
+                                height={500}
+                                className="h-full w-full object-cover"
                               />
                             </Link>
                             <h6 className="post-title">

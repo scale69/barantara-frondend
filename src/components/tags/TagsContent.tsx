@@ -66,7 +66,10 @@ export default function TagsContent({ category }: { category: string }) {
             {/* <TopTrnding /> */}
             {/* end top trending */}
             {data?.map((item: any) => (
-              <div className="flex flex-col gap-2 justify-center p-4 w-full">
+              <div
+                key={item.id}
+                className="flex flex-col gap-2 justify-center p-4 w-full"
+              >
                 {item.beritas?.map((x: any) => {
                   const uploadTime = new Date(x.createdAt);
 
