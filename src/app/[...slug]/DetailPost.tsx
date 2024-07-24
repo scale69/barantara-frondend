@@ -98,10 +98,14 @@ export default async function DetailPost({ slug }: { slug: string }) {
             <div className="   gap-5 flex flex-col">
               <CardTags category={item.category} />
               <MobileAds number={0} />
-              <Ads position="right" />
+              <MobileAds number={1} />
+              <div className="lg:block hidden">
+                <Ads position="right" />
+              </div>
               <div className="lg:hidden">
                 <Trending />
               </div>
+              <MobileAds number={2} />
             </div>
           </>
         ))}

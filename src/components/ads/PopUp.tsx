@@ -24,6 +24,7 @@ export default function PopUp() {
   if (error) return <div>failed to load</div>;
   if (isLoading) return <></>;
   if (data.length === 0) return <></>;
+
   return (
     <>
       <Modal footer open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
