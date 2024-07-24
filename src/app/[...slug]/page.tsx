@@ -1,9 +1,5 @@
-"use client";
-
-// import NotFoundCustom from "../notPage";
-// import Lock from "../lock";
 import { useState } from "react";
-import { notFound, useRouter } from "next/navigation";
+import { notFound } from "next/navigation";
 import Lock from "../lock";
 import TentangKami from "./TentangKami";
 import DetailPost from "./DetailPost";
@@ -11,6 +7,7 @@ import Category from "./Category";
 import NotFound from "../not-found";
 import TagsContent from "@/components/tags/TagsContent";
 import Search from "@/components/search/Search";
+import CardTags from "@/components/tags/CardTags";
 
 export default function Page({ params }: { params: { slug: string[] } }) {
   const category = [
@@ -47,13 +44,6 @@ export default function Page({ params }: { params: { slug: string[] } }) {
 
   const path2segment = path1 + "/" + path2;
 
-  const [on, setOn] = useState(false);
-  const router = useRouter();
-
-  if (on == true) {
-    router.push("/lock");
-  }
-
   if (path1 === "lock") {
     return <Lock />;
   }
@@ -65,7 +55,7 @@ export default function Page({ params }: { params: { slug: string[] } }) {
 
   if (slugs.length === 2) {
     if (path1.includes(`tags`)) {
-      return <TagsContent category={path2} />;
+      return <Category titleCategory={path2} category={path1} />;
     }
 
     if (category.includes(path2)) {

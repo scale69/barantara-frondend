@@ -1,5 +1,3 @@
-"use client";
-
 import { fetchTrending } from "@/lib/axios/action";
 import { ClockCircleOutlined } from "@ant-design/icons";
 import { formatDistanceToNowStrict } from "date-fns";
@@ -8,17 +6,8 @@ import Link from "next/link";
 import Image from "next/image";
 import useSWR from "swr";
 
-export default function Trending() {
-  const { data, error, isLoading } = useSWR("trendingNews", fetchTrending, {
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false,
-    revalidateIfStale: false,
-  });
-
-  if (error) return <div>failed to load</div>;
-  if (isLoading) return <></>;
-
-  // const data = await fetchTrending();
+export default async function Trending() {
+  const data = await fetchTrending();
 
   if (data?.length === 0) return <></>;
   return (

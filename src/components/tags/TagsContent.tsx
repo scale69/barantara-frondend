@@ -1,5 +1,3 @@
-"use client";
-
 import Ads from "@/components/ads/ads";
 import CardCategory from "@/components/card/cardCategory";
 import Trending from "@/components/trending-news/Trending";
@@ -14,25 +12,8 @@ import { formatDistanceToNowStrict } from "date-fns";
 import { id } from "date-fns/locale";
 import MobileAds from "../ads/MobileAds";
 
-export default function TagsContent({ category }: { category: string }) {
-  const { data, error, isLoading } = useSWR(
-    category.replaceAll("-", " "),
-    filterTags,
-    {
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
-      revalidateIfStale: false,
-    }
-  );
-
-  if (error) return <div>failed to load</div>;
-  if (isLoading) {
-    return (
-      <div className="flex  justify-center items-center w-full   h-screen">
-        <Spin />
-      </div>
-    );
-  }
+export default async function TagsContent({ category }: { category: string }) {
+  const data = await filterTags(category.replaceAll("-", " "));
 
   return (
     <main className="flex flex-col  text-black h-full  py-16 gap-2 md:py-24 ">

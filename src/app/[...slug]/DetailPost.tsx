@@ -1,12 +1,9 @@
-"use client";
-
 import { filterPost } from "@/lib/axios/action";
 import {
   ClockCircleOutlined,
   RadiusBottomleftOutlined,
 } from "@ant-design/icons";
 import Image from "next/image";
-import useSWR from "swr";
 import ReactMarkdown from "react-markdown";
 // import NotFoundCustom from "@/app/notPage";
 import { Spin } from "antd";
@@ -16,23 +13,11 @@ import CardTags from "@/components/tags/CardTags";
 import NotFound from "../not-found";
 import MobileAds from "@/components/ads/MobileAds";
 import { notFound } from "next/navigation";
-import { MdPreview, MdCatalog } from "md-editor-rt";
+import MarkDown from "@/components/content/MarkDown";
 
-export default function DetailPost({ slug }: { slug: any }) {
-  const { data, error, isLoading } = useSWR(`${slug}`, filterPost, {
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false,
-    revalidateIfStale: false,
-  });
+export default async function DetailPost({ slug }: { slug: string }) {
+  const data = await filterPost(slug);
 
-  if (error) return <div>eroor</div>;
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center w-full   h-screen">
-        <Spin />
-      </div>
-    );
-  }
   if (!data) return notFound();
   if (!data[0]?.category) {
     return notFound();
@@ -59,8 +44,6 @@ export default function DetailPost({ slug }: { slug: any }) {
   const resultTime = `${formattedDate} : ${formattedTime}`;
 
   return (
-    // <div className="flex text-sm justify-center text-black  items-center flex-col h-full w-full py-16 md:py-24 ">
-    //   <div className="flex gap-5 justify-center py-5  w-full h-full  px-5">
     <div className="flex justify-center w-full   h-full py-24 px-2">
       <div className="z-10 w-full h-full gap-5  justify-center text-sm flex flex-col lg:flex-row  ">
         <div className="lg:flex hidden gap-5 w-max flex-col">
@@ -100,7 +83,7 @@ export default function DetailPost({ slug }: { slug: any }) {
               </div>
               {/* body */}
               {/* <ReactMarkdown className={""}>{item.isi}</ReactMarkdown> */}
-              <MdPreview editorId={"isi"} modelValue={item.isi} />
+              <MarkDown isi={item.isi} />
               <div className="my-10 flex  flex-col py-2 pr-20 pl-4 bg-slate-300 ">
                 <div className="flex  items-center gap-2">
                   <RadiusBottomleftOutlined />

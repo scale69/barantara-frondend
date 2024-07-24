@@ -1,21 +1,14 @@
-"use client";
-
 import { fetchTags } from "@/lib/axios/action";
 import { TagsOutlined } from "@ant-design/icons";
 import { Empty } from "antd";
 
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import useSWR from "swr";
 
-export default function CardTags({ category }: { category: string }) {
-  const { data, error, isLoading } = useSWR(category, fetchTags, {
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false,
-    revalidateIfStale: false,
-  });
+export default async function CardTags({ category }: { category: string }) {
+  const data = await fetchTags(category);
 
-  if (error) return <div>failed to load</div>;
-  if (isLoading) return <></>;
   if (category === "umum" || data?.length === 0) {
     return (
       <div className="flex flex-col gap-2 rounded-lg shadow-md overflow-x-hidden  pb-10 relative w-full lg:w-[350px]">

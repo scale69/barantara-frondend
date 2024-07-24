@@ -5,6 +5,9 @@ import NotFound from "../not-found";
 import MobileAds from "@/components/ads/MobileAds";
 import CardSearch from "@/components/card/CardSearch";
 import { SearchOutlined } from "@ant-design/icons";
+import CardTags from "@/components/tags/CardTags";
+import { notFound } from "next/navigation";
+import Tags from "./Tags";
 const Linkcategory = [
   "sulawesi-tenggara",
   "sulawesi-tenggara/kendari",
@@ -30,10 +33,44 @@ const Linkcategory = [
   "artikel-dan-advertorial",
   "tentang-kami",
   "search",
+  "tags",
 ];
-export default function Category({ category }: { category: any }) {
+export default function Category({
+  category,
+  titleCategory,
+}: {
+  category: any;
+  titleCategory?: string;
+}) {
   // if (!Linkcategory.includes(category)) return <NotFound />;
 
+  let title;
+  let body;
+
+  if (!Linkcategory.includes(category)) {
+    title = (
+      <div className="flex gap-2 items-center">
+        <SearchOutlined />
+        {(category as string)?.replaceAll("-", " ")}
+      </div>
+    );
+  } else {
+    title = (category as string)?.replaceAll("-", " ");
+  }
+  // if (category.includes("tags")) {
+  //   body = <CardTags titlePath={titlePath} />;
+  // } else {
+  //   body = <CardCategory category={category} />;
+  // }
+
+  if (category == "tags") {
+    if (!titleCategory) return notFound();
+    body = <Tags titleCategory={titleCategory.replaceAll("%20", " ")} />;
+  } else if (!Linkcategory.includes(category)) {
+    body = <CardSearch category={category} />;
+  } else {
+    body = <CardCategory category={category} />;
+  }
   return (
     <div className="flex  text-black flex-col  h-full w-full py-16 md:py-24 ">
       <div className="flex md:gap-5 justify-center w-full p-2 h-full">
@@ -48,21 +85,14 @@ export default function Category({ category }: { category: any }) {
         <div className=" flex flex-col justify-center items-center  w-full md:w-[720px]   h-full">
           <div className="  flex flex-col  w-full rounded-lg bg-zinc-50  shadow-md border h-full ">
             <span className="font-semibold uppercase text-slate-600 p-4  bg-slate-200">
-              {!Linkcategory.includes(category) ? (
-                <div className="flex gap-2 items-center">
-                  <SearchOutlined />
-                  {(category as string)?.replaceAll("-", " ")}
-                </div>
-              ) : (
-                (category as string)?.replaceAll("-", " ")
-              )}
+              {title}
             </span>
-
-            {!Linkcategory.includes(category) ? (
+            {/* {!Linkcategory.includes(category) ? (
               <CardSearch category={category} />
             ) : (
               <CardCategory category={category} />
-            )}
+            )} */}
+            {body}
           </div>
           {/* <SeputarBerita subNews="sulawesi-tenggara" />
         <MobileAds number={0} /> */}

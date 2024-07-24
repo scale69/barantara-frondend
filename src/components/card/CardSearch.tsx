@@ -77,7 +77,7 @@ export default function CardSearch({ category }: { category: string }) {
                 />
               </div>
               <div className="  py-2 px-6 overflow-hidden">
-                <div className="flex items-center py-2 gap-5">
+                <div className="flex items-center py-2 gap-2">
                   {item.trending && (
                     <span className="mb-1 block font-sans text-sm font-semibold leading-relaxed tracking-normal text-pink-500 antialiased">
                       Trending
