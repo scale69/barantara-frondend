@@ -25,6 +25,7 @@ export default function Slider() {
     revalidateOnReconnect: false,
     revalidateIfStale: false,
   });
+
   const {
     data: topPost,
     isLoading: lPost,
@@ -34,6 +35,7 @@ export default function Slider() {
     revalidateOnReconnect: false,
     revalidateIfStale: false,
   });
+
   if (error || ePost) return <div>failed to load</div>;
   if (isLoading || lPost)
     return (

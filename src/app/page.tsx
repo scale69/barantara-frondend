@@ -6,16 +6,57 @@ import Search from "@/components/search/Search";
 import HeaderAds from "@/components/ads/HeaderAds";
 import Link from "next/link";
 import BeanerAds from "@/components/ads/BeanerAds";
+import { FetchAds, fetchALLAds } from "@/lib/axios/action";
 
-export default function Home() {
+export interface IGambar {
+  url: string;
+  altText: string;
+}
+
+export interface IBerita {
+  title: string;
+  content: string;
+}
+
+export interface IAds {
+  id: number;
+  documentId: string;
+  judul: string;
+  posisi: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string | null;
+  gambar: IGambar;
+  beritas: IBerita[];
+}
+
+export default async function Home() {
+  const dataAds = (await fetchALLAds()) as IAds[];
+  const adsLeft = dataAds.filter((item: any) => item.posisi === "left");
+  const adsRight = dataAds.filter((item: any) => item.posisi === "right");
+  const adsPopUP = dataAds.filter((item: any) => item.posisi === "pop_up");
+
   return (
     <main className="flex min-h-screen flex-col gap-5 items-center justify-between  px-2 py-24 ">
       <Slider />
+
       {/* <HeaderAds /> */}
+
+      {/* x */}
       <Search />
-      <Contetnt />
+      {/* x */}
+
+      {/* ada */}
+      <Contetnt {...{ adsLeft, adsRight, adsPopUP }} />
+      {/* <Contetnt halo={"coba"} /> */}
+      {/* ada */}
+
+      {/* ada */}
       <BeanerAds />
+
       <BodySubContent />
+      {/* ada */}
     </main>
   );
 }

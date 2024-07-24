@@ -1,9 +1,9 @@
 import Ads from "@/components/ads/ads";
 
-export default function RightContent() {
+export default function RightContent({ adsRight }: { adsRight: any }) {
   return (
     <div className="hidden w-[350px] lg:flex   flex-col gap-10">
-      <Ads position="right" />
+      <Ads dataAds={adsRight} />
     </div>
   );
 }

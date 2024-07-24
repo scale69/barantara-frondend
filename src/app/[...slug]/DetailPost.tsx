@@ -14,8 +14,18 @@ import NotFound from "../not-found";
 import MobileAds from "@/components/ads/MobileAds";
 import { notFound } from "next/navigation";
 import MarkDown from "@/components/content/MarkDown";
+import { IAds } from "../page";
 
-export default async function DetailPost({ slug }: { slug: string }) {
+export default async function DetailPost({
+  slug,
+  dataAds,
+}: {
+  slug: string;
+  dataAds: IAds[];
+}) {
+  const adsLeft = dataAds.filter((item: any) => item.posisi === "left");
+  const adsRight = dataAds.filter((item: any) => item.posisi === "right");
+
   const data = await filterPost(slug);
 
   if (!data) return notFound();
@@ -48,7 +58,7 @@ export default async function DetailPost({ slug }: { slug: string }) {
       <div className="z-10 w-full h-full gap-5  justify-center text-sm flex flex-col lg:flex-row  ">
         <div className="lg:flex hidden gap-5 w-max flex-col">
           <Trending />
-          <Ads position="left" />
+          <Ads dataAds={adsLeft} />
         </div>
         {data?.map((item: any) => (
           <>
@@ -100,7 +110,7 @@ export default async function DetailPost({ slug }: { slug: string }) {
               <MobileAds number={0} />
               <MobileAds number={1} />
               <div className="lg:block hidden">
-                <Ads position="right" />
+                <Ads dataAds={adsRight} />
               </div>
               <div className="lg:hidden">
                 <Trending />

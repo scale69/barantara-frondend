@@ -8,6 +8,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import CardTags from "@/components/tags/CardTags";
 import { notFound } from "next/navigation";
 import Tags from "./Tags";
+import { IAds } from "../page";
 const Linkcategory = [
   "sulawesi-tenggara",
   "sulawesi-tenggara/kendari",
@@ -38,11 +39,16 @@ const Linkcategory = [
 export default function Category({
   category,
   titleCategory,
+  dataAds,
 }: {
   category: any;
   titleCategory?: string;
+  dataAds: IAds[];
 }) {
   // if (!Linkcategory.includes(category)) return <NotFound />;
+
+  const adsLeft = dataAds?.filter((item: any) => item.posisi === "left");
+  const adsRight = dataAds?.filter((item: any) => item.posisi === "right");
 
   let title;
   let body;
@@ -57,11 +63,6 @@ export default function Category({
   } else {
     title = (category as string)?.replaceAll("-", " ");
   }
-  // if (category.includes("tags")) {
-  //   body = <CardTags titlePath={titlePath} />;
-  // } else {
-  //   body = <CardCategory category={category} />;
-  // }
 
   if (category == "tags") {
     if (!titleCategory) return notFound();
@@ -71,13 +72,14 @@ export default function Category({
   } else {
     body = <CardCategory category={category} />;
   }
+
   return (
     <div className="flex  text-black flex-col  h-full w-full py-16 md:py-24 ">
       <div className="flex md:gap-5 justify-center w-full p-2 h-full">
         {/* iklan kiri */}
         <div className="hidden lg:flex  flex-col gap-4 ">
           <Trending />
-          <Ads position="left" />
+          <Ads dataAds={adsLeft} />
         </div>
 
         {/* isi content */}
@@ -102,7 +104,7 @@ export default function Category({
 
         {/* iklan kanan */}
         <div className="hidden lg:block">
-          <Ads position="right" />
+          <Ads dataAds={adsRight} />
         </div>
         {/* iklan moile */}
 

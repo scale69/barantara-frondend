@@ -1,9 +1,13 @@
+import { fetchALLAds } from "@/lib/axios/action";
 import Category from "../[...slug]/Category";
+import { IAds } from "../page";
 
-export default function Page({
+export default async function Page({
   searchParams,
 }: {
   searchParams: { query: string };
 }) {
-  return <Category category={searchParams.query} />;
+  const dataAds = (await fetchALLAds()) as IAds[];
+
+  return <Category dataAds={dataAds} category={searchParams.query} />;
 }

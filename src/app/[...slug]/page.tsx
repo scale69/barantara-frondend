@@ -8,8 +8,12 @@ import NotFound from "../not-found";
 import TagsContent from "@/components/tags/TagsContent";
 import Search from "@/components/search/Search";
 import CardTags from "@/components/tags/CardTags";
+import { fetchALLAds } from "@/lib/axios/action";
+import { IAds } from "../page";
 
-export default function Page({ params }: { params: { slug: string[] } }) {
+export default async function Page({ params }: { params: { slug: string[] } }) {
+  const dataAds = (await fetchALLAds()) as IAds[];
+
   const category = [
     "sulawesi-tenggara",
     "sulawesi-tenggara/kendari",
@@ -51,11 +55,13 @@ export default function Page({ params }: { params: { slug: string[] } }) {
     return <TentangKami />;
   }
 
-  if (slugs.length === 3) return <DetailPost slug={path3} />;
+  if (slugs.length === 3) return <DetailPost dataAds={dataAds} slug={path3} />;
 
   if (slugs.length === 2) {
     if (path1.includes(`tags`)) {
-      return <Category titleCategory={path2} category={path1} />;
+      return (
+        <Category dataAds={dataAds} titleCategory={path2} category={path1} />
+      );
     }
 
     if (category.includes(path2)) {
@@ -63,17 +69,17 @@ export default function Page({ params }: { params: { slug: string[] } }) {
       if (!category.includes(path2segment)) {
         return notFound();
       } else {
-        return <Category category={path2} />;
+        return <Category dataAds={dataAds} category={path2} />;
       }
     } else {
       // jika urlnya slug
-      return <DetailPost slug={path2} />;
+      return <DetailPost dataAds={dataAds} slug={path2} />;
     }
   }
 
   if (category.includes(path1)) {
-    return <Category category={path1} />;
+    return <Category dataAds={dataAds} category={path1} />;
   } else {
-    return <DetailPost slug={path1} />;
+    return <DetailPost dataAds={dataAds} slug={path1} />;
   }
 }

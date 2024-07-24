@@ -66,6 +66,11 @@ export async function fetchMobileAds() {
     const data = await res.data?.data
     return data
 }
+export async function fetchALLAds() {
+    const res = await instance.get('/api/ads?populate=*')
+    const data = await res.data?.data
+    return data
+}
 export async function fetchAbout() {
     const res = await instance.get('/api/abouts?populate=*')
     const data = await res.data?.data
