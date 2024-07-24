@@ -1,4 +1,3 @@
-"use client";
 import { FetchAds } from "@/lib/axios/action";
 // import { Ads, fetchAds, fetchAdsLeft } from "@/lib/axios/action";
 import { Spin } from "antd";
@@ -9,21 +8,22 @@ interface Props {
   position: string;
 }
 
-export default function Ads({
+export default async function Ads({
   position,
   number,
 }: {
   position: string;
   number?: number;
 }) {
-  const { data, error, isLoading } = useSWR(position, FetchAds, {
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false,
-    revalidateIfStale: false,
-  });
+  const data = await FetchAds(position);
+  // const { data, error, isLoading } = useSWR(position, FetchAds, {
+  //   revalidateOnFocus: false,
+  //   revalidateOnReconnect: false,
+  //   revalidateIfStale: false,
+  // });
 
-  if (error) return <div>failed</div>;
-  if (isLoading) return <></>;
+  // if (error) return <div>failed</div>;
+  // if (isLoading) return <></>;
   const default_number = number || 0;
   if (!data) {
     return <></>;
