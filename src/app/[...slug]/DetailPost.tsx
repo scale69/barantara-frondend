@@ -96,7 +96,7 @@ export default function DetailPost({ slug }: { slug: any }) {
                     sizes="300"
                   />
                 </div>
-                <span className="text-xs italic">{item.caption}</span>
+                <span className="text-xs italic">{item.gambar?.caption}</span>
               </div>
               {/* body */}
               {/* <ReactMarkdown className={""}>{item.isi}</ReactMarkdown> */}

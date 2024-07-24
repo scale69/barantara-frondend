@@ -77,6 +77,7 @@ export const fetchTags = async (category : string) => await instance.get(`/api/t
 export const filterSosmed = async (sosmed : string) => await instance.get(`/api/sosial-medias?filters[aplikasi][$eq]=${sosmed}`).then(res => res.data?.data).catch(error => console.log(error))
 export const filterTags = async (name : string) => await instance.get(`/api/tags?filters[name][$contains]=${name}&&populate=deep`).then(res => res.data?.data).catch(error => console.log(error))
 export const FetchAds = async (position : string) => await instance.get(`/api/ads?filters[posisi][$eq]=${position}&pagination[limit]=20&&populate=*`).then(res => res.data?.data).catch(error => console.log(error))
+// export const filterPost = async (slug : string) => await instance.get(`/api/posts?filters[slug][$eqi]=${slug}&&populate=*`).then(res => []).catch(error => console.log(error))
 export const filterPost = async (slug : string) => await instance.get(`/api/posts?filters[slug][$eqi]=${slug}&&populate=*`).then(res => res.data?.data).catch(error => console.log(error))
 export const filterSubNews = async (subNews : string) => await instance.get(`/api/posts?filters[category][$contains]=${subNews}&pagination[limit]=8&sort[0]=createdAt:desc&&populate=*`).then(res => res.data?.data).catch(error => console.log(error))
 export const filterSubBerita = async (url : string) => await instance.get(url).then(res => res.data).catch(error => console.log(error))
