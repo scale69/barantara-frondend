@@ -1,4 +1,4 @@
-import PopUp from "../ads/popUp";
+import PopUp from "../ads/PopUp";
 import Trending from "../trending-news/Trending";
 import CenterContent from "./center-content/CenterContent";
 import LeftContent from "./left-content/LeftContent";
