@@ -27,12 +27,19 @@ export default function CardCategory({ category }: { category: string }) {
   const pathname = usePathname();
 
   const searchParams = useSearchParams();
-
+  let categoryFilter;
   const pageNumber = searchParams.get("page") || 1;
   const pageSize = 7;
+  if (category == "hukum") {
+    categoryFilter = "hukum-dan-politik/hukum";
+  } else if (category == "politik") {
+    categoryFilter = "hukum-dan-politik/politik";
+  } else {
+    categoryFilter = category;
+  }
 
   const { data, error, isLoading } = useSWR(
-    `/api/posts?filters[category][$contains]=${category}&pagination[page]=${pageNumber}&pagination[pageSize]=${pageSize}&sort[0]=createdAt:desc&&populate=*`,
+    `/api/posts?filters[category][$eqi]=${categoryFilter}&pagination[page]=${pageNumber}&pagination[pageSize]=${pageSize}&sort[0]=createdAt:desc&&populate=*`,
     filterSubBerita,
     {
       revalidateOnFocus: false,

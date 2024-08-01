@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   title: "Barantara",
   description: "Berita Sulwasi Tenggara",
 };
-
+export const dynamic = "force-dynamic";
 export default function RootLayout({
   children,
 }: Readonly<{
