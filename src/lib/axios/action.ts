@@ -51,6 +51,16 @@ export const fetchTrending = async () => {
     }
 };
 
+export async function fetchSlide() {
+    try {
+        const res = await instance.get('/api/slides?populate=*')
+        const data = await res.data?.data
+        return data
+    } catch (error) {
+        return console.log(error);
+    }
+}
+
 export async function fetchMobileAds() {
     try {
         const res = await instance.get('/api/ads?populate=*')
