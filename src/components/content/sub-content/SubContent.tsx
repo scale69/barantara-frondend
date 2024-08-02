@@ -44,7 +44,11 @@ export default function SubContent({ subNews }: { subNews: string }) {
               >
                 <div className="relative h-16 md:h-20  flex  aspect-square items-center justify-center">
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_URL_BACKEND}${item.gambar?.formats.small?.url}`}
+                    src={
+                      item.gambar?.formats.large?.url
+                        ? `${process.env.NEXT_PUBLIC_URL_BACKEND}${item.gambar?.formats.large?.url}`
+                        : `/news.png`
+                    }
                     fill
                     sizes="300"
                     alt={item.judul}

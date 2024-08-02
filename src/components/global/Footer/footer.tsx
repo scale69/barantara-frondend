@@ -1,5 +1,3 @@
-"use client";
-
 import { fetchTopPost, fetchTopTrending } from "@/lib/axios/action";
 import { formatDistanceToNowStrict } from "date-fns";
 import { id } from "date-fns/locale";
@@ -7,24 +5,26 @@ import Image from "next/image";
 import Link from "next/link";
 import useSWR from "swr";
 
-export default function Footer() {
-  const { data, isLoading, error } = useSWR("topNews", fetchTopPost, {
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false,
-    revalidateIfStale: false,
-  });
-  const {
-    data: trending,
-    isLoading: tLoading,
-    error: tError,
-  } = useSWR("topTrending", fetchTopTrending, {
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false,
-    revalidateIfStale: false,
-  });
+export default async function Footer() {
+  // const { data, isLoading, error } = useSWR("topNews", fetchTopPost, {
+  //   revalidateOnFocus: false,
+  //   revalidateOnReconnect: false,
+  //   revalidateIfStale: false,
+  // });
+  // const {
+  //   data: trending,
+  //   isLoading: tLoading,
+  //   error: tError,
+  // } = useSWR("topTrending", fetchTopTrending, {
+  //   revalidateOnFocus: false,
+  //   revalidateOnReconnect: false,
+  //   revalidateIfStale: false,
+  // });
 
-  if (error || tError) return <></>;
-  if (isLoading || tLoading) return <></>;
+  // if (error || tError) return <></>;
+  // if (isLoading || tLoading) return <></>;
+  const data = await fetchTopPost();
+  const trending = await fetchTopPost();
 
   return (
     <>

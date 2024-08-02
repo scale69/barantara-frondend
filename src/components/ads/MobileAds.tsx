@@ -14,32 +14,33 @@ export default function MobileAds({ number }: { number: number }) {
 
   if (error) return <FiledAPI />;
   if (isLoading) return <></>;
-  if (!data[number]) {
-    return <></>;
+  if (data) {
+    if (!data[number]) {
+      return <></>;
+    }
   }
   return (
     <>
-      {/* <div className="bg-red-100 w-full h-[500px] shadow-md">
-      </div> */}
-
-      <div
-        key={data[number]?.id}
-        className="flex flex-col justify-center  items-center  lg:hidden  pt-4  w-full  h-max "
-      >
-        <Image
-          src={`${process.env.NEXT_PUBLIC_URL_BACKEND}${data[number]?.gambar?.formats.large?.url}`}
-          alt="image"
-          style={{
-            width: "auto",
-            height: "100%",
-          }}
-          width={500}
-          height={750}
-          // fill
-          loading="lazy"
-          sizes="300"
-        />
-      </div>
+      {data && (
+        <div
+          key={data[number]?.id}
+          className="flex flex-col justify-center  items-center  lg:hidden  pt-4  w-full  h-max "
+        >
+          <Image
+            src={`${process.env.NEXT_PUBLIC_URL_BACKEND}${data[number]?.gambar?.formats.large?.url}`}
+            alt="image"
+            style={{
+              width: "auto",
+              height: "100%",
+            }}
+            width={500}
+            height={750}
+            // fill
+            loading="lazy"
+            sizes="300"
+          />
+        </div>
+      )}
     </>
   );
 }

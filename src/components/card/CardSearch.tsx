@@ -49,16 +49,16 @@ export default function CardSearch({ category }: { category: string }) {
     );
   }
 
-  const totalCount = data.meta?.pagination.pageCount * 10;
+  const totalCount = data?.meta?.pagination.pageCount * 10;
 
   return (
     <div className="flex flex-col gap-5 p-5 w-full">
-      {data.data.length === 0 && (
+      {data?.data.length === 0 && (
         <div className="flex justify-center items-center w-full">
           <Empty />
         </div>
       )}
-      {data.data.map((item: any) => {
+      {data?.data.map((item: any) => {
         const uploadTime = new Date(item.createdAt);
 
         // Hitung jarak waktu antara sekarang dengan waktu upload
@@ -105,7 +105,7 @@ export default function CardSearch({ category }: { category: string }) {
           </div>
         );
       })}
-      {data.data.length >= pageSize && (
+      {data?.data.length >= pageSize && (
         <Pagination
           onChange={(a) => {
             router.push(`?page=${a}`);

@@ -39,7 +39,7 @@ export default function CardCategory({ category }: { category: string }) {
   }
 
   const { data, error, isLoading } = useSWR(
-    `/api/posts?filters[category][$eqi]=${categoryFilter}&pagination[page]=${pageNumber}&pagination[pageSize]=${pageSize}&sort[0]=createdAt:desc&&populate=*`,
+    `/api/posts?filters[category][$contains]=${categoryFilter}&pagination[page]=${pageNumber}&pagination[pageSize]=${pageSize}&sort[0]=createdAt:desc&&populate=*`,
     filterSubBerita,
     {
       revalidateOnFocus: false,

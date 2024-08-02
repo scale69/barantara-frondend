@@ -44,37 +44,39 @@ export async function fetchPost() {
 
 export const fetchTrending = async () => {
     try {
-        const { data } = await instance.get('/api/posts?filters[trending][$eq]=treu&&populate=*');
+        const { data } = await instance.get('/api/posts?filters[trending][$eq]=treu&sort[0]=createdAt:desc&&populate=*');
         return await data?.data;
     } catch (error) {
         return console.log(error);
     }
 };
 
-export async function fetchSlide() {
+export async function fetchMobileAds() {
     try {
-        const res = await instance.get('/api/slides?populate=*')
+        const res = await instance.get('/api/ads?populate=*')
         const data = await res.data?.data
         return data
     } catch (error) {
         return console.log(error);
     }
 }
-
-export async function fetchMobileAds() {
-    const res = await instance.get('/api/ads?populate=*')
-    const data = await res.data?.data
-    return data
-}
 export async function fetchALLAds() {
-    const res = await instance.get('/api/ads?populate=*')
-    const data = await res.data?.data
-    return data
+    try {
+        const res = await instance.get('/api/ads?populate=*')
+        const data = await res.data?.data
+        return data
+    } catch (error) {
+        return console.log(error);
+    }
 }
 export async function fetchAbout() {
-    const res = await instance.get('/api/abouts?populate=*')
-    const data = await res.data?.data
-    return data
+    try {
+        const res = await instance.get('/api/abouts?populate=*')
+        const data = await res.data?.data
+        return data
+    } catch (error) {
+        return console.log(error);
+    }
 }
 
 

@@ -30,7 +30,7 @@ export default async function TentangKami() {
               Tentang Kami
             </span>
 
-            {data.length == 0 && (
+            {data?.length == 0 && (
               <div className="p-10">
                 <Empty />
               </div>

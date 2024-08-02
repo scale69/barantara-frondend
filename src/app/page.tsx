@@ -33,9 +33,9 @@ export interface IAds {
 
 export default async function Home() {
   const dataAds = (await fetchALLAds()) as IAds[];
-  const adsLeft = dataAds.filter((item: any) => item.posisi === "left");
-  const adsRight = dataAds.filter((item: any) => item.posisi === "right");
-  const adsPopUP = dataAds.filter((item: any) => item.posisi === "pop_up");
+  const adsLeft = dataAds?.filter((item: any) => item.posisi === "left");
+  const adsRight = dataAds?.filter((item: any) => item.posisi === "right");
+  const adsPopUP = dataAds?.filter((item: any) => item.posisi === "pop_up");
 
   return (
     <main className="flex min-h-screen flex-col gap-5 items-center justify-between  px-2 py-24 ">

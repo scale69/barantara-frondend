@@ -24,16 +24,18 @@ export default function BeanerAds() {
             <div className="col-lg-6">
               <div className="subscribe-content">
                 <h3 className="title">Hubungi kami untuk pasang iklan</h3>
-                <a
-                  href={`//${data[0]?.url}`}
-                  target="_blank"
-                  id="submit"
-                  className="default-btn"
-                  type="submit"
-                >
-                  <i className="lab la-telegram-plane pr-2" />
-                  via whatsapp
-                </a>
+                {data && (
+                  <a
+                    href={`//${data[0]?.url}`}
+                    target="_blank"
+                    id="submit"
+                    className="default-btn"
+                    type="submit"
+                  >
+                    <i className="lab la-telegram-plane pr-2" />
+                    via whatsapp
+                  </a>
+                )}
               </div>
             </div>
             <div className="col-lg-6">

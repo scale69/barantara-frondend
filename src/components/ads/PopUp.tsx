@@ -23,19 +23,25 @@ export default function PopUp() {
 
   if (error) return <div>failed to load</div>;
   if (isLoading) return <></>;
-  if (data.length === 0) return <></>;
+  if (data?.length === 0) return <></>;
 
   return (
     <>
       <Modal footer open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
         <div className="flex justify-center py-4 items-center w-full h-full">
-          <Image
-            src={`${process.env.NEXT_PUBLIC_URL_BACKEND}${data[0].gambar?.formats.large?.url}`}
-            alt="image"
-            width={350}
-            height={500}
-            sizes="300"
-          />
+          {data && (
+            <Image
+              src={
+                data[0].gambar?.formats.large?.url
+                  ? `${process.env.NEXT_PUBLIC_URL_BACKEND}${data[0].gambar?.formats.large?.url}`
+                  : `/news.png`
+              }
+              alt="image"
+              width={350}
+              height={500}
+              sizes="300"
+            />
+          )}
         </div>
       </Modal>
     </>
