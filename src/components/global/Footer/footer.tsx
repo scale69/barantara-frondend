@@ -1,4 +1,8 @@
-import { fetchSosmed, fetchTopPost } from "@/lib/axios/action";
+import {
+  fetchSosmed,
+  fetchTopPost,
+  fetchTopTrending,
+} from "@/lib/axios/action";
 import { formatDistanceToNowStrict } from "date-fns";
 import { id } from "date-fns/locale";
 import Image from "next/image";
@@ -6,7 +10,7 @@ import Link from "next/link";
 
 export default async function Footer() {
   const data = await fetchTopPost();
-  const trending = await fetchTopPost();
+  const trending = await fetchTopTrending();
   const sosmed = await fetchSosmed();
 
   const facebook = sosmed.filter((item: any) => item.aplikasi === "facebook");
