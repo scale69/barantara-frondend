@@ -1,30 +1,19 @@
-import { fetchTopPost, fetchTopTrending } from "@/lib/axios/action";
+import { fetchSosmed, fetchTopPost } from "@/lib/axios/action";
 import { formatDistanceToNowStrict } from "date-fns";
 import { id } from "date-fns/locale";
 import Image from "next/image";
 import Link from "next/link";
-import useSWR from "swr";
 
 export default async function Footer() {
-  // const { data, isLoading, error } = useSWR("topNews", fetchTopPost, {
-  //   revalidateOnFocus: false,
-  //   revalidateOnReconnect: false,
-  //   revalidateIfStale: false,
-  // });
-  // const {
-  //   data: trending,
-  //   isLoading: tLoading,
-  //   error: tError,
-  // } = useSWR("topTrending", fetchTopTrending, {
-  //   revalidateOnFocus: false,
-  //   revalidateOnReconnect: false,
-  //   revalidateIfStale: false,
-  // });
-
-  // if (error || tError) return <></>;
-  // if (isLoading || tLoading) return <></>;
   const data = await fetchTopPost();
   const trending = await fetchTopPost();
+  const sosmed = await fetchSosmed();
+
+  const facebook = sosmed.filter((item: any) => item.aplikasi === "facebook");
+  const instagram = sosmed.filter((item: any) => item.aplikasi === "instagram");
+  const email = sosmed.filter((item: any) => item.aplikasi === "email");
+  const whatsapp = sosmed.filter((item: any) => item.aplikasi === "whatsapp");
+  console.log(facebook);
 
   return (
     <>
@@ -36,31 +25,42 @@ export default async function Footer() {
                 <div className="footer-item">
                   <div className="footer-content">
                     <ul className="contact-list">
-                      <li>
-                        Email Us:{" "}
-                        <Link
-                          href="mailto:infouemail@gmail.com"
-                          target="_blank"
-                        >
-                          infouemail@gmail.com
-                        </Link>
-                      </li>
-                      <li>
-                        Contact:{" "}
-                        <Link href="/tel:+5-784-8894-678">+5-784-8894-678</Link>
-                      </li>
+                      {email[0] && (
+                        <li>
+                          Email Us:{" "}
+                          <Link
+                            href={`mailto:${email[0]?.url}`}
+                            // href="mailto:infouemail@gmail.com"
+                            target="_blank"
+                          >
+                            {email[0]?.url}
+                          </Link>
+                        </li>
+                      )}
+                      {whatsapp[0] && (
+                        <li>
+                          Contact:{" "}
+                          <a href={`tel:+${whatsapp[0]?.url}`}>
+                            +{whatsapp[0]?.url}
+                          </a>
+                        </li>
+                      )}
                       <li>
                         <ul className="footer-social">
-                          <li>
-                            <Link href="/#">
-                              <i className="lab la-facebook-f" />
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href="/#">
-                              <i className="lab la-instagram" />
-                            </Link>
-                          </li>
+                          {facebook[0] && (
+                            <li>
+                              <Link href={`/${facebook[0]?.url}`}>
+                                <i className="lab la-facebook-f" />
+                              </Link>
+                            </li>
+                          )}
+                          {instagram[0] && (
+                            <li>
+                              <Link href={`/${instagram[0]?.url}`}>
+                                <i className="lab la-instagram" />
+                              </Link>
+                            </li>
+                          )}
                         </ul>
                       </li>
                     </ul>

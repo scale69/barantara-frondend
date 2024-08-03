@@ -11,14 +11,15 @@ export const MenuitemsUrl: MenuItem[] = [
   },
   {
     key: "sub1",
-    label: "SULTRA",
+    type: "submenu",
+    label: (
+      <Link className="text-black" href={"/sulawesi-tenggara"}>
+        SULTRA
+      </Link>
+    ),
+    // label: "SULTRA",
     // icon: <MailOutlined />,
     children: [
-      {
-        key: "001",
-        type: "item",
-        label: <Link href={"/sulawesi-tenggara"}>Lihat Semua</Link>,
-      },
       {
         key: "g1",
         label: "Daratan",
@@ -74,7 +75,13 @@ export const MenuitemsUrl: MenuItem[] = [
   },
   {
     key: "sub4",
-    label: "Hukum & Politik",
+    type: "submenu",
+    label: (
+      <Link className="text-black" href={"/hukum-dan-politik"}>
+        Hukum & Politik
+      </Link>
+    ),
+    // label: "Hukum & Politik",
     // icon: <SettingOutlined />,
     children: [
       {

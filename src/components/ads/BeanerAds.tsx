@@ -1,21 +1,20 @@
-"use client";
-
 import FiledAPI from "@/app/filedAPI";
 import { fetchSosmed, filterSosmed } from "@/lib/axios/action";
 import Image from "next/image";
 import Link from "next/link";
 import useSWR from "swr";
 
-export default function BeanerAds() {
-  const { data, isLoading, error } = useSWR("whatsapp", filterSosmed, {
-    revalidateOnFocus: false,
-    revalidateOnReconnect: false,
-    revalidateIfStale: false,
-  });
+export default async function BeanerAds() {
+  // const { data, isLoading, error } = useSWR("whatsapp", filterSosmed, {
+  //   revalidateOnFocus: false,
+  //   revalidateOnReconnect: false,
+  //   revalidateIfStale: false,
+  // });
 
-  // if (!data) return <FiledAPI />;
-  if (error) return <></>;
-  if (isLoading) return <></>;
+  // // if (!data) return <FiledAPI />;
+  // if (error) return <></>;
+  // if (isLoading) return <></>;
+  const data = await filterSosmed("whatsapp");
   return (
     <div className="">
       <section className="subscribe-section bg-grey-2 px-5 mt-5">
@@ -26,7 +25,7 @@ export default function BeanerAds() {
                 <h3 className="title">Hubungi kami untuk pasang iklan</h3>
                 {data && (
                   <a
-                    href={`//${data[0]?.url}`}
+                    href={`//wa.me/${data[0]?.url}`}
                     target="_blank"
                     id="submit"
                     className="default-btn"

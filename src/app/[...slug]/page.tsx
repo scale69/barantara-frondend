@@ -24,6 +24,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
     "sulawesi-tenggara/kepulauan-buton",
     "hukum-dan-politik/hukum",
     "hukum-dan-politik/politik",
+    "hukum-dan-politik",
     "kendari",
     "baubau",
     "kepulauan-buton",
