@@ -3,7 +3,7 @@ const nextConfig = {
     images:{
         remotePatterns:[
             {
-            hostname:process.env.HOSTNAME,
+            hostname:"153.92.4.56",
             }
         ]
     }
