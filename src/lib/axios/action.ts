@@ -6,7 +6,7 @@ import instance from "./instance"
 
 export async function getPostBySlug(slug: string) {
     try {
-        const filteredPosts = await instance.get(`/api/posts?filters[slug][$eqi]=${slug}&&populate=*`)
+        const filteredPosts = await instance.get(`/api/posts?filters[slug][$eqi]=${slug}&&populate=deep`)
 
         const fistPost = await filteredPosts.data?.data[0]
 

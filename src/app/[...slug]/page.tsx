@@ -33,7 +33,7 @@ export async function generateMetadata(
     openGraph: {
       images: [
         {
-          url: post.gambar?.formats.small?.url,
+          url: `${process.env.BASE_URL_BACKEND}${post.gambar?.formats.small?.url}`,
           width: 800,
           height: 600,
         },
