@@ -26,6 +26,8 @@ export default async function DetailPost({
   const adsLeft = dataAds.filter((item: any) => item.posisi === "left");
   const adsRight = dataAds.filter((item: any) => item.posisi === "right");
 
+  const mobile = dataAds.filter((item: any) => item.mobile === true);
+
   const data = await filterPost(slug);
 
   if (!data) return notFound();

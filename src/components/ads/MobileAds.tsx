@@ -21,7 +21,7 @@ export default function MobileAds({ number }: { number: number }) {
   }
   return (
     <>
-      {data && (
+      {data[number]?.mobile && (
         <div
           key={data[number]?.id}
           className="flex flex-col justify-center  items-center  lg:hidden  pt-4  w-full  h-max "
@@ -35,7 +35,6 @@ export default function MobileAds({ number }: { number: number }) {
             }}
             width={500}
             height={750}
-            // fill
             loading="lazy"
             sizes="300"
           />

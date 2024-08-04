@@ -22,6 +22,7 @@ export interface IAds {
   id: number;
   documentId: string;
   judul: string;
+  mobile: boolean;
   posisi: string;
   createdAt: string;
   updatedAt: string;

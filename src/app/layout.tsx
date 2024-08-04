@@ -25,6 +25,17 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Barantara",
   description: "Berita Sulwasi Tenggara",
+  metadataBase: new URL("https://barantara.com"),
+  robots: {
+    googleBot: {
+      index: true,
+      follow: false,
+      noimageindex: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 export const dynamic = "force-dynamic";
 // export const revalidate = 3600;

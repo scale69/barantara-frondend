@@ -113,8 +113,9 @@ export default function Category({
         {/*  */}
       </div>
       <div className=" w-full px-2 py-4 flex flex-col lg:flex-row gap-4">
-        <div className="md:hidden w-full">
+        <div className="md:hidden space-y-5 w-full">
           <Trending />
+          <CardTags category={category} />
           <MobileAds number={0} />
         </div>
       </div>
