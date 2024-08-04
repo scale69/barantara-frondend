@@ -31,7 +31,13 @@ export async function generateMetadata(
     title: post.judul,
     description: post.isi,
     openGraph: {
-      images: [post.gambar?.formats.small?.url],
+      images: [
+        {
+          url: post.gambar?.formats.small?.url,
+          width: 800,
+          height: 600,
+        },
+      ],
     },
   };
 }
