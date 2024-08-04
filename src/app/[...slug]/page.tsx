@@ -8,8 +8,33 @@ import NotFound from "../not-found";
 import TagsContent from "@/components/tags/TagsContent";
 import Search from "@/components/search/Search";
 import CardTags from "@/components/tags/CardTags";
-import { fetchALLAds } from "@/lib/axios/action";
+import { fetchALLAds, filterPost, getPostBySlug } from "@/lib/axios/action";
 import { IAds } from "../page";
+import { Metadata, ResolvingMetadata } from "next";
+
+type Props = {
+  params: { slug: string[] };
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const slugs = params.slug;
+  const slugLast = slugs[slugs.length - 1]; // dapatkan slug di index terakhir
+
+  const post = await getPostBySlug(slugLast);
+
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: post.judul,
+    description: post.isi,
+    openGraph: {
+      images: [post.gambar?.formats.small?.url, ...previousImages],
+    },
+  };
+}
 
 export default async function Page({ params }: { params: { slug: string[] } }) {
   const dataAds = (await fetchALLAds()) as IAds[];
@@ -52,6 +77,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
   if (path1 === "lock") {
     return <Lock />;
   }
+
   if (path1 === "tentang-kami") {
     return <TentangKami />;
   }
