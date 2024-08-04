@@ -3,7 +3,7 @@ const nextConfig = {
     images:{
         remotePatterns:[
             {
-            hostname:"153.92.4.56",
+            hostname:"api.barantara.com",
             }
         ]
     }
