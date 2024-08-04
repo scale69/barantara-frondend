@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import useSWR from "swr";
 import FiledAPI from "@/app/filedAPI";
+import { Empty } from "antd";
 
 export default function SubContent({ subNews }: { subNews: string }) {
   const { data, error, isLoading } = useSWR(subNews, filterSubNews, {
@@ -19,7 +20,17 @@ export default function SubContent({ subNews }: { subNews: string }) {
   if (error) return <FiledAPI />;
   if (isLoading) return <></>;
 
-  if (data?.length === 0) return <></>;
+  if (data?.length === 0)
+    return (
+      <>
+        <div className=" rounded-lg mt-5 shadow-md flex-col gap-2 flex h-72 w-full pb-10  bg-slate-50">
+          <span className="font-semibold text-sm text-slate-700 p-4 uppercase w-full bg-slate-200">
+            {subNews}
+          </span>
+          <Empty />
+        </div>
+      </>
+    );
   return (
     <div className=" rounded-lg mt-5 shadow-md flex-col gap-2 flex  w-full h-max pb-10  bg-slate-50">
       <span className="font-semibold text-sm text-slate-700 p-4 uppercase w-full bg-slate-200">

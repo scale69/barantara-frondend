@@ -17,7 +17,6 @@ export default async function Footer() {
   const instagram = sosmed.filter((item: any) => item.aplikasi === "instagram");
   const email = sosmed.filter((item: any) => item.aplikasi === "email");
   const whatsapp = sosmed.filter((item: any) => item.aplikasi === "whatsapp");
-  console.log(facebook);
 
   return (
     <>

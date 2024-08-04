@@ -1,17 +1,33 @@
 import { fetchTrending } from "@/lib/axios/action";
-import { ClockCircleOutlined } from "@ant-design/icons";
+import {
+  ClockCircleOutlined,
+  RiseOutlined,
+  TagsOutlined,
+} from "@ant-design/icons";
 import { formatDistanceToNowStrict } from "date-fns";
 import { id } from "date-fns/locale";
 import Link from "next/link";
 import Image from "next/image";
 import useSWR from "swr";
+import { Empty } from "antd";
 
 export default async function Trending() {
   const data = await fetchTrending();
 
-  if (data?.length === 0) return <></>;
+  if (data?.length === 0)
+    return (
+      <>
+        <div className="flex flex-col gap-2 rounded-lg shadow-md overflow-x-hidden  pb-10 relative w-full lg:w-[350px]">
+          <div className=" sticky flex gap-2 top-0 w-full  z-20 font-semibold p-4  bg-slate-200">
+            <RiseOutlined />
+            <span>Berita Trending</span>
+          </div>
+          <Empty />
+        </div>
+      </>
+    );
   return (
-    <div className="flex relative w-full lg:w-[350px] rounded-lg shadow-md  flex-col overflow-x-hidden h-max lg:max-h-72 lg:overflow-y-scroll  pb-4  bg-slate-50">
+    <div className="flex relative w-full lg:w-[350px] rounded-lg shadow-md  flex-col overflow-x-hidden h-max lg:h-72 lg:overflow-y-scroll  pb-4  bg-slate-50">
       <span className=" sticky top-0 w-full  z-20 font-semibold p-4  bg-slate-200">
         Berita Trending
       </span>
