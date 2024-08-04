@@ -5,13 +5,9 @@ export default function Lock() {
     <div className="h-screen fixed z-50 w-screen bg-gray-100 flex items-center">
       <div className="container flex flex-col md:flex-row items-center justify-center px-5 text-gray-700">
         <div className="max-w-md">
-          <div className="text-5xl font-dark font-bold">404</div>
+          <div className="text-5xl font-dark font-bold">Not Found</div>
           <p className="text-2xl md:text-3xl font-light leading-normal">
-            Maaf Server belum dibayar.{" "}
-          </p>
-          <p>Tapi jangan khawatir, data yang ada tidak akan terhapus.</p>
-          <p className="mb-8">
-            Silahkan lakukan pembayaran untuk mengaktifkan website
+            Server mati{" "}
           </p>
 
           <Link

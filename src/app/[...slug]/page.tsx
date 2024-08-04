@@ -28,12 +28,14 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: post.judul,
-    description: post.isi,
+    title: post?.judul || "Barantara SULTRA",
+    description: post?.isi || "Berita Sulwasi Tenggara",
     openGraph: {
       images: [
         {
-          url: `${process.env.BASE_URL_BACKEND}${post.gambar?.formats.small?.url}`,
+          url:
+            `${process.env.BASE_URL_BACKEND}${post?.gambar?.formats.small?.url}` ||
+            "",
           width: 800,
           height: 600,
         },
@@ -79,10 +81,6 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
   const path3 = slugs[2];
 
   const path2segment = path1 + "/" + path2;
-
-  if (path1 === "lock") {
-    return <Lock />;
-  }
 
   if (path1 === "tentang-kami") {
     return <TentangKami />;
