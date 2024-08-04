@@ -25,7 +25,6 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Barantara SUlTRA",
   description: "Berita Sulwasi Tenggara",
-  metadataBase: new URL("https://barantara.com"),
   robots: {
     googleBot: {
       index: true,
