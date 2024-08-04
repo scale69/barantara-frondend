@@ -108,8 +108,8 @@ export default async function DetailPost({
             {/* batas isi */}
             {/* iklan kanan */}
             <div className="   gap-5 flex flex-col">
-              <CardTags category={item.category} />
               <MobileAds number={0} />
+              <CardTags category={item.category} />
               <MobileAds number={1} />
               <div className="lg:block hidden">
                 <Ads dataAds={adsRight} />
