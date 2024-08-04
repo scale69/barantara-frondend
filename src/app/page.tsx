@@ -50,7 +50,6 @@ export default async function Home() {
 
       {/* ada */}
       <Contetnt {...{ adsLeft, adsRight, adsPopUP }} />
-      {/* <Contetnt halo={"coba"} /> */}
       {/* ada */}
 
       {/* ada */}
