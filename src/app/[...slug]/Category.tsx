@@ -105,6 +105,7 @@ export default function Category({
 
         {/* iklan kanan */}
         <div className="hidden lg:block">
+          <CardTags category={category} />
           <Ads dataAds={adsRight} />
         </div>
         {/* iklan moile */}

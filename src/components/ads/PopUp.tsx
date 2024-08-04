@@ -19,7 +19,11 @@ export default function PopUp() {
     setIsModalOpen(false);
   };
 
-  const { data, error, isLoading } = useSWR("pop_up", FetchAds);
+  const { data, error, isLoading } = useSWR("pop_up", FetchAds, {
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+    revalidateIfStale: false,
+  });
 
   if (error) return <div>failed to load</div>;
   if (isLoading) return <></>;
