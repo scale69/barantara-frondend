@@ -104,7 +104,7 @@ export default function Category({
         {/* batas isi */}
 
         {/* iklan kanan */}
-        <div className="hidden lg:block">
+        <div className="hidden space-y-5 lg:block">
           <CardTags category={category} />
           <Ads dataAds={adsRight} />
         </div>
