@@ -12,8 +12,8 @@ export default function ShareButton() {
 
   return (
     <div className="w-full flex gap-2">
-      <WhatsappShare size={30} url={pathname} />
-      <FacebookShare size={30} url={pathname} />
+      <WhatsappShare size={30} url={`${url}${pathname}`} />
+      <FacebookShare size={30} url={`${url}${pathname}`} />
     </div>
   );
 }
