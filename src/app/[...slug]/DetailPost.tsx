@@ -15,6 +15,7 @@ import MobileAds from "@/components/ads/MobileAds";
 import { notFound } from "next/navigation";
 import MarkDown from "@/components/content/MarkDown";
 import { IAds } from "../page";
+import ShareButton from "@/components/ShareButton";
 
 export default async function DetailPost({
   slug,
@@ -69,10 +70,11 @@ export default async function DetailPost({
               className=" flex py-14 flex-col gap-5 p-4 md:p-10  max-w-3xl rounded-lg bg-zinc-50 shadow-md border h-full "
             >
               {/* nav */}
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 w-full">
                 <span className="text-2xl font-bold text-slate-900 py-5">
                   {item.judul}
                 </span>
+                <ShareButton />
                 <div className="flex items-center gap-2 ">
                   <ClockCircleOutlined />
                   <span className="text-sm text-zinc-500">{resultTime}</span>
