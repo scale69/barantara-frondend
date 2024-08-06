@@ -16,7 +16,7 @@ import "/public/assets/css/posty-color.css";
 import "/public/assets/css/swiper.min.css";
 import "/public/assets/css/venobox.min.css";
 import PaymentStatus from "@/components/PaymentStatus";
-
+<meta property="og:image:type" content="image/png" />;
 const poppins = Poppins({
   weight: ["400"],
   subsets: ["latin"],
